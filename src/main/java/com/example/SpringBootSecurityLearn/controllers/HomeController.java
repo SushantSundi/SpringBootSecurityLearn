@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/home")
 public class HomeController {
@@ -24,5 +26,10 @@ public class HomeController {
     @GetMapping("/public")
     public String getPublic() {
         return "Hi you hit Public Api";
+    }
+
+    @GetMapping("/current-user")
+    public String getCurrentUser(Principal principal) {
+        return principal.getName();
     }
 }

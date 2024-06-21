@@ -10,17 +10,14 @@ import java.util.List;
 public class UserService {
     List<User> list = new ArrayList<>();
 
-    public UserService() {
-        list.add(new User("abc", "abcPassword", "abc@gmail.com"));
-        list.add(new User("xyz", "xyzPassword", "xyz@gmail.com"));
-    }
+    public UserService() {}
 
     public List<User> getAllUsers() {
         return list;
     }
 
     public User getUser(String username) {
-        return list.stream().filter(user -> user.getUsername().equals(username)).findAny().orElse(null);
+        return list.stream().filter(user -> user.getUserId().equals(username)).findAny().orElse(null);
     }
     public User addUser(User user) {
         list.add(user);
