@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,14 +13,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-@Service
+@Component
 public class JwtService {
-    @Value("${security.jwt.secret-key}")
-    private String secret;
-
-    @Value("${security.jwt.expiration-time}")
-    private long JWT_TOKEN_VALIDITY;
+//    @Value("${security.jwt.secret-key}")
+//    private String secret;
+//
+//    @Value("${security.jwt.expiration-time}")
+//    @Value("${security.jwt.expiration-time}")
+//    private long JWT_TOKEN_VALIDITY;
     //retrieve username from jwt token
+
+    public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+
+    //    public static final long JWT_TOKEN_VALIDITY =  60;
+    private String secret = "afafasfafafasfasfasfafacasdasfasxASFACASDFACASDFASFASFDAFASFASDAADSCSDFADCVSGCFVADXCcadwavfsfarvf";
+
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }

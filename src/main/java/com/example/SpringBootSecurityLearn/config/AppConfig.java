@@ -19,10 +19,14 @@ public class AppConfig {
     }
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails normalUser = User.withUsername("sushant").password(passwordEncoder().encode("Sushant@abc")).roles("NORMAL").build();
-        UserDetails adminUser = User.withUsername("suraj").password(passwordEncoder().encode("Suraj@abc")).roles("ADMIN").build();
+        UserDetails userDetails = User.builder().
+                username("DURGESH")
+                .password(passwordEncoder().encode("DURGESH")).roles("ADMIN").
+                build();
+//        UserDetails normalUser = User.withUsername("sushant").password(passwordEncoder().encode("Sushant@abc")).roles("NORMAL").build();
+//        UserDetails adminUser = User.withUsername("suraj").password(passwordEncoder().encode("Suraj@abc")).roles("ADMIN").build();
 
-        return new InMemoryUserDetailsManager(normalUser, adminUser);
+        return new InMemoryUserDetailsManager(userDetails);
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception {

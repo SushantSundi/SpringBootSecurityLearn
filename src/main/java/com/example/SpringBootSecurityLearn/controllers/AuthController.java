@@ -26,6 +26,11 @@ public class AuthController {
     private JwtService jwtService;
     private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
+    @GetMapping("/welcome")
+    public String showWelcome() {
+        return "Hi, This is welcome message from Auth";
+    }
+
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
         this.doAuthenticate(request.getEmail(), request.getPassword());
