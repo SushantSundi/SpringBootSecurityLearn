@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/home")
 public class HomeController {
 
-//    @PreAuthorize("hasRole('ROLE_NORMAL')")
+    @PreAuthorize("hasRole('NORMAL')")
     @GetMapping("/normal")
     public String getNormal() {
         return "Hi you hit Normal Api";
     }
 
-//    @PreAuthorize("hasRole('ROLE_NORMAL')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public String getAdmin() {
         return "Hi you hit Admin Api";
